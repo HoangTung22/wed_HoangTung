@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2TU PetShop | Đăng ký</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+  /* 🌈 Nền tổng thể */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh; /* ✅ đổi từ height thành min-height để co giãn */
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    overflow-y: auto; /* ✅ cho phép cuộn dọc */
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* 🫧 Bong bóng động */
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25;
+    animation: float 10s infinite ease-in-out;
+  }
+  .bubble:nth-child(1) { background: #4facfe; width: 150px; height: 150px; top: 10%; left: 20%; animation-delay: 0s; }
+  .bubble:nth-child(2) { background: #00f2fe; width: 100px; height: 100px; bottom: 20%; right: 15%; animation-delay: 2s; }
+  .bubble:nth-child(3) { background: #43e97b; width: 80px; height: 80px; top: 60%; left: 10%; animation-delay: 4s; }
+
+  @keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+    100% { transform: translateY(0); }
+  }
+
+  /* 🐾 Khung đăng ký */
+  .register-card {
+    position: relative;
+    width: 450px;
+    padding: 40px 35px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    backdrop-filter: blur(8px);
+    animation: fadeIn 1s ease-out;
+    margin: 60px 0; /* ✅ thêm khoảng trống trên dưới để không dính sát viền */
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .register-logo {
+    width: 90px;
+    display: block;
+    margin: 0 auto 10px;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  .register-card h3 {
+    text-align: center;
+    color: #007bff;
+    font-weight: 700;
+    margin-bottom: 25px;
+  }
+
+  .form-control {
+    border-radius: 10px;
+    border: 1px solid #b3e5ff;
+    padding-left: 40px;
+  }
+
+  .input-group-text {
+    border-radius: 10px 0 0 10px;
+    background-color: #e3f2fd;
+    color: #007bff;
+    border: 1px solid #b3e5ff;
+  }
+
+  .btn-register {
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 10px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-register:hover {
+    background: linear-gradient(90deg, #00f2fe, #4facfe);
+    transform: scale(1.05);
+  }
+
+  .footer-text {
+    text-align: center;
+    margin-top: 15px;
+    color: #555;
+  }
+
+  .footer-text a {
+    color: #007bff;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .footer-text a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+  <!-- 🌸 Bong bóng nền -->
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+
+  <!-- 🐶 Form đăng ký -->
+  <div class="register-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Pet Logo" class="register-logo">
+    <h3><i class="fa-solid fa-paw"></i> Tạo tài khoản khách hàng</h3>
+
+    <form action="../api/register_khachhang.php" method="POST">
+      <div class="mb-3">
+        <label class="form-label">Tên khách hàng</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+          <input type="text" name="ten" class="form-control" placeholder="Nhập họ tên" required>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+          <input type="email" name="email" class="form-control" placeholder="Nhập email" required>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Số điện thoại</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
+          <input type="text" name="so_dien_thoai" class="form-control" placeholder="Nhập số điện thoại">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Địa chỉ</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
+          <input type="text" name="dia_chi" class="form-control" placeholder="Nhập địa chỉ">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Tên đăng nhập</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa-solid fa-id-card"></i></span>
+          <input type="text" name="username" class="form-control" placeholder="Nhập username" required>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Mật khẩu</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+          <input type="password" name="password" class="form-control" placeholder="Nhập mật khẩu" required>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-register w-100">
+        <i class="fa-solid fa-user-plus"></i> Đăng ký
+      </button>
+    </form>
+
+    <div class="footer-text mt-3">
+      Đã có tài khoản? <a href="login.html">Đăng nhập ngay</a>
+    </div>
+  </div>
+
+</body>
+</html>
